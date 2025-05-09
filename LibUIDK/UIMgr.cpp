@@ -2994,7 +2994,7 @@ XML::IXMLDOMElementPtr SaveOpenProgram(XML::IXMLDOMDocumentPtr xmlDoc, XML::IXML
 	HRESULT hr = S_OK;
 	XML::IXMLDOMElementPtr pElement = xmlDoc->createElement("Configuration");
 	pElement->setAttribute(_T("OpenProgram"), _variant_t("UIShop.exe"));
-	hr = pParentElement->appendChild(pElement);
+	/*hr = */pParentElement->appendChild(pElement);
 
 	return pElement;
 }
@@ -3019,7 +3019,7 @@ XML::IXMLDOMElementPtr SaveXUIVersion(XML::IXMLDOMDocumentPtr xmlDoc, XML::IXMLD
 	strChangeList.Format(_T("%d"), CUIMgr::GetLibUIDKChangeList());
 	pVersionElement->setAttribute(_T("ChangeList"), _variant_t(strChangeList));
 
-	hr = pParentElement->appendChild(pVersionElement);
+	/*hr = */pParentElement->appendChild(pVersionElement);
 
 	return pVersionElement;
 }
@@ -3032,22 +3032,22 @@ XML::IXMLDOMElementPtr SaveConfig(XML::IXMLDOMDocumentPtr xmlDoc)
 			_T("xml"),
 			_T("version='1.0' encoding='utf-8'"));
 
-	hr = xmlDoc->appendChild(pi);
+	/*hr = */xmlDoc->appendChild(pi);
 	XML::IXMLDOMCommentPtr pc = xmlDoc->createComment(_T("DO NOT EDIT OR DELETE THIS LIBUIDK UI FILE!"));
-	hr = xmlDoc->appendChild(pc);
+	/*hr = */xmlDoc->appendChild(pc);
 	//#ifdef _DEBUG
 	pc = xmlDoc->createComment(_T("www.iuishop.com"));
-	hr = xmlDoc->appendChild(pc);
+	/*hr = */xmlDoc->appendChild(pc);
 
 	pc = xmlDoc->createComment(_T("iuishop@iuishop.com"));
-	hr = xmlDoc->appendChild(pc);
+	/*hr = */xmlDoc->appendChild(pc);
 	//#endif
 
 	pc = xmlDoc->createComment(_T("LibUIDK"));
-	hr = xmlDoc->appendChild(pc);
+	/*hr = */xmlDoc->appendChild(pc);
 
 	XML::IXMLDOMElementPtr pRootElement = xmlDoc->createElement("LibUIDKUI");
-	hr = xmlDoc->appendChild(pRootElement);
+	/*hr = */xmlDoc->appendChild(pRootElement);
 
 	SaveOpenProgram(xmlDoc, pRootElement);
 	SaveXUIVersion(xmlDoc, pRootElement);
@@ -3526,7 +3526,7 @@ XML::IXMLDOMElementPtr SaveWindow(XML::IXMLDOMDocumentPtr xmlDoc, XML::IXMLDOMEl
 
 	SaveControlProperties(xmlDoc, pWindow, pUIProp, NULL);
 
-	hr = pWindows->appendChild(pWindow);
+	/*hr = */pWindows->appendChild(pWindow);
 
 	// Save children
 	XML::IXMLDOMElementPtr pControls = xmlDoc->createElement(_T("Controls"));
@@ -3555,7 +3555,7 @@ int SaveAllWindows(XML::IXMLDOMDocumentPtr xmlDoc, XML::IXMLDOMElementPtr pParen
 	HRESULT hr = S_OK;
 
 	XML::IXMLDOMElementPtr pWindows = xmlDoc->createElement("Windows");
-	hr = pParentElement->appendChild(pWindows);
+	/*hr = */pParentElement->appendChild(pWindows);
 
 	size_t nCount = pvWindows->size();
 	for (size_t i = 0; i < nCount; ++i)
@@ -3661,7 +3661,7 @@ int SaveAllResources(
 	HRESULT hr = S_OK;
 
 	XML::IXMLDOMElementPtr pResources = xmlDoc->createElement("Resources");
-	hr = pParentElement->appendChild(pResources);
+	/*hr = */pParentElement->appendChild(pResources);
 
 	// Default font resource
 	XML::IXMLDOMElementPtr pDefaultFont = xmlDoc->createElement("DefaultFont");
@@ -6169,7 +6169,7 @@ int CUIMgr::SaveSkin()
 
 	// Save all styles
 	XML::IXMLDOMElementPtr pStyles = xmlDoc->createElement("Styles");
-	hr = pRootElement->appendChild(pStyles);
+	/*hr = */pRootElement->appendChild(pStyles);
 
 	SAVE_STYLE("PushButtons", m_vpStylePushButton, BTNPROPERTIES)
 	SAVE_STYLE("CheckBoxes", m_vpStyleCheckBox, CHKPROPERTIES)
